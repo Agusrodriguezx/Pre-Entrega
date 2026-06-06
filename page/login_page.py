@@ -16,7 +16,7 @@ class LoginPage:
     def ingresar_usuario(self, usuario): # envía valor que usuario ingrese dentro de la caja usuario
         self.driver.find_element(*self.username_input).send_keys(usuario)
 
-    def ingresar_password(self, password):
+    def ingresar_contraseña(self, password):
         self.driver.find_element(*self.password_input).send_keys(password)
 
     def click_login(self):
@@ -28,6 +28,6 @@ class LoginPage:
         self.ingresar_contraseña(password)
         self.click_login()
 
-    def get_error_password_message(self):
+    def get_error_message(self):
         return self.driver.find_element(*self.error_password).text
         
