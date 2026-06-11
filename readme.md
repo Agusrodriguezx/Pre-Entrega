@@ -8,7 +8,7 @@ Las pruebas cubren los flujos principales de la aplicación web Swag Labs: login
 
 El proyecto utiliza el patrón de diseño Page Object Model (POM) para mejorar la organización, reutilización y mantenibilidad del código.
 
-Además, se implementó un enfoque de Data-Driven Testing utilizando archivos CSV para ejecutar múltiples escenarios de autenticación con diferentes conjuntos de datos y resultados esperados.
+Además, se implementó un enfoque de Data-Driven Testing utilizando archivos CSV y JSON para separar los datos de prueba de la lógica de los tests, facilitando la reutilización y el mantenimiento de los escenarios automatizados.
 
 
 ## Tecnologías usadas
@@ -16,7 +16,7 @@ Además, se implementó un enfoque de Data-Driven Testing utilizando archivos CS
 - Selenium WebDriver
 - Pytest
 - Pytest HTML
-- CSV (Data-Driven Testing)
+- CSV y JSON (Data-Driven Testing)
 - Google Chrome + ChromeDriver
 - Git
 
@@ -86,6 +86,17 @@ pytest --html=report.html --self-contained-html
     - Navega al carrito
     - Comprueba que el producto agregado sea el esperado.
 
+---
+
+### test_cart_json.py — Pruebas del carrito con datos externos
+
+- Implementa Data-Driven Testing utilizando un archivo JSON.
+- Utiliza datos almacenados en `data/products.json`.
+- Lee los datos de prueba mediante `utils/data_reader.py`.
+- Agrega múltiples productos al carrito utilizando información externa al test.
+- Navega al carrito y valida que los productos agregados coincidan con los definidos en el archivo JSON.
+- Verifica tanto el nombre como el precio de cada producto.
+
 
 ## Patrón de diseño utilizado
 
@@ -95,5 +106,6 @@ Se implementó el patrón Page Object Model para separar los elementos y accione
 Las páginas se representan mediante clases independientes:
 - LoginPage
 - InventoryPage
+- CartPage
 
 Esto permite mejorar la reutilización del código y facilitar el mantenimiento de las pruebas automatizadas.
